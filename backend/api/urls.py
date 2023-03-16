@@ -4,11 +4,9 @@ from . import views
 urlpatterns = [
     # path("todos/",  views.TodoList.as_view()),
     path("todos/",  views.TodoListCreate.as_view()),
-<<<<<<< HEAD
-    path("todos/<int:pk>",  views.TodoRetrieveUpdateDestroyy.as_view()),
-=======
     path("todos/<int:pk>/complete",  views.TodoRetrieveUpdateDestroy.as_view()),
->>>>>>> refs/remotes/origin/main
+    path("todos/<int:pk>/complete", views.TodoToggleComplete.as_view()),
+    path("signup/", views.signup),
 ]
 
 

@@ -45,6 +45,14 @@ INSTALLED_APPS = [
     
 ]
 
+# code added to specify that token authentication will be used. (paired with above rest_framework.authtoken)
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+        
+    ]
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
