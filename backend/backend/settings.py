@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+# Apps added to this project
     "todo",
     "rest_framework",
     "api",
+    "rest_framework.authtoken", # This will generate the tokens on the server 
     
 ]
 
