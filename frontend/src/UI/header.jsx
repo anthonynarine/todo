@@ -7,28 +7,13 @@ import { Link } from "react-router-dom";
 //array of tabs used in navbar
 const navBarTabs = ["Todo", "login", "signup"];
 
-function Header() {
+function Header({ user }) {
   const [tabNum, setTabNum] = useState();
   // handles inidicator scroll under tabs. CURRENTLY NOT WORKING AS EXPECTED
   const handleTabChange = (event, tabNum) => {
     setTabNum(tabNum);
   };
 
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
-  const [error, setError] = useState(null);
-
-  async function Login(user = null) {
-    setUser(null);
-  }
-
-  async function Logout(user = null) {
-    setUser(null);
-  }
-
-  async function Singup(user = null) {
-    setUser(null);
-  }
 
   return (
     <AppBar
@@ -52,7 +37,7 @@ function Header() {
         >
           {/* Conditionally rendering the login/sign up button if user is not logged in or logout if user is signed in */}
           <Tab label="Todos" LinkComponent={Link} to="/"></Tab>
-          {false ? (
+          {user ? (
             <Tab label="Logout" LinkComponent={Link} to="/login">
               {user}
             </Tab>

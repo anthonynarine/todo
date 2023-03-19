@@ -28,7 +28,7 @@ class TodoDataService {
     }
 
     login(data){
-        return axios.post("http://localhost:8000/api/login/");
+        return axios.post("http://localhost:8000/api/login/", data);
     }
 
     signup(data){

@@ -111,7 +111,7 @@ def login(request):
             try:
                 token = Token.objects.get(user=user)
             except: # if token not in db, create a new one
-                token = token.objects.create(user=user)
+                token = Token.objects.create(user=user)
             return JsonResponse({"token" :str(token)}, status=201)         
             
             

@@ -1,17 +1,6 @@
+import { Box, Typography, TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {
-  Container,
-  Box,
-  Form,
-  Avatar,
-  Grid,
-  Paper,
-  Typography,
-  TextField,
-  Button,
-} from "@mui/material";
-import { border, margin } from "@mui/system";
 
 const loginStyles = {
   box: {
@@ -83,7 +72,12 @@ function Login({ login }) {
           variant="outlined"
           placeholder="Enter password"
         />
-        <Button onClick={signIn} sx={loginStyles.btn} size="large" variant="contained">
+        <Button
+          onClick={signIn}
+          sx={loginStyles.btn}
+          size="large"
+          variant="contained"
+        >
           Login
         </Button>
       </Box>
