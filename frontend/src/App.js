@@ -11,19 +11,19 @@ import { useState } from "react";
 
 function App() {
 
-  // const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
   // const [error, setError] = useState(null);
 
-  // async function Login(user = null){
+  async function login(user = null){
+    setUser(null)
+  };
+
+  // async function logout(user = null){
   //   setUser(null)
   // };
 
-  // async function Logout(user = null){
-  //   setUser(null)
-  // };
-
-  // async function Singup(user = null){
+  // async function singup(user = null){
   //   setUser(null)
   // };
 
@@ -36,7 +36,7 @@ function App() {
         <Route path="/" element={<TodoList token={token} />} />
         <Route path="/todos/create" element={<AddTodo token={token} />} />
         <Route path="/todos/:id" element={<AddTodo token={token} />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login login={login} />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
       {/* <Footer /> */}
