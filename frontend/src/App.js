@@ -22,31 +22,45 @@ function App() {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user", user.username);
         setError("");
-        console.log("DATA TEST", response.data, user)
+        // console.log("TOKEN USER", response.data, user.username)
       })
       .catch((error) => {
         console.log("login", error);
       });
   }
-  // async function logout(user = null){
-  //   setUser(null)
-  // };
+  async function logout(user = null){
+    setToken("");
+    setUser("");
+    localStorage.setItem("token", "");
+    localStorage.setItem("user", "");
+  };
 
-  // async function singup(user = null){
-  //   setUser(null)
-  // };
+  async function signup(user = null){
+    TodoDataservice.signup(user)
+    .then(response =>{
+        setToken(response.data.token);
+        setUser(user.usernaame);
+        localStorage.setItem("token", response.data.token);
+        localStorage.getItem("user", user.usernaame);
+    })
+    .catch(error =>{
+        console.log(error)
+        setError(error.toString());
+    })
+
+}
 
   return (
     <div>
 {/* user comes from above async func and is passed a props to header comp (see header for destructure and usage ) */}
-      <Header user={user} />
+      <Header user={user} logout={logout}/>
       <Routes>
         {/* we pass in token for the user to authenticate itself */}
         <Route path="/" element={<TodoList token={token} />} />
         <Route path="/todos/create" element={<AddTodo token={token} />} />
         <Route path="/todos/:id" element={<AddTodo token={token} />} />
         <Route path="/login" element={<Login login={login} />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup signup={signup} />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       {/* <Footer /> */}
