@@ -5,11 +5,13 @@ import { useState } from "react";
 
 const loginStyles = {
   box: {
-    border: "solid #111810",
+    // border: "solid #111810",
     maxWidth: 500,
     margin: "auto",
-    marginTop: 2,
+    marginTop: 5,
     padding: 2,
+    paddingBottond: 5,
+    backgroundColor: "#DDDDE5",
     // borderRadius: 5,
     boxShadow: "5px 5px 10px #ccc",
     ":hover": {
@@ -18,14 +20,15 @@ const loginStyles = {
   },
   btn: {
     backgroundColor: "#060606",
-    width: 100,
+    width: 300,
     marginTop: 3,
+    marginBottom:3,
     borderRadius: 3,
     "&:hover": {
       backgroundColor: "#FF3F00",
     },
     paper: {
-      width: 200, 
+      width: 300, 
     }
   },
 };
@@ -78,8 +81,7 @@ function Login({ login }) {
           />
         <TextField
           color="warning"
-        sx={{width: 200}}
-        
+        sx={{width: 300}}
           onChange={handlePasswordChange}
           margin="normal"
           type={"password"}

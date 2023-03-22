@@ -1,9 +1,22 @@
-import { Typography, Grid, Paper, Button, TextField } from "@mui/material";
+import { Typography, Grid, Box, Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Stack } from "@mui/system";
 
 const signupStyles = {
+  box: {
+    // border: "solid #111810",
+    maxWidth: 500,
+    margin: "auto",
+    marginTop: 5,
+    padding: 2,
+    backgroundColor: "#DDDDE5",
+    // borderRadius: 5,
+    boxShadow: "5px 5px 10px #ccc",
+    ":hover": {
+      boxShadow: "10px 10px 20px #060606",
+    },
+  },
   btn: {
     backgroundColor: "#060606",
     width: 300,
@@ -44,7 +57,7 @@ function Signup({ signup }) {
   };
 
   return (
-    <Paper sx={{ width: "60%", margin: "auto", marginTop: 3, backgroundColor:"#D9DADB" }}>
+    <Box sx={signupStyles.box}>
       <form>
         <Typography color="#060606" variant="h4" padding={3} textAlign="center">
           Sign up
@@ -54,7 +67,7 @@ function Signup({ signup }) {
           container
           rowSpacing={1}
           justifyContent="center"
-        //   sx={{ border: "solid" }}
+          //   sx={{ border: "solid" }}
         >
           <Grid item container justifyContent="center">
             <Grid item>
@@ -81,12 +94,8 @@ function Signup({ signup }) {
                 />
               </Grid>
             </Grid>
-            <Grid
-              item
-              justifyContent="center"
-              container
-            >
-              <Stack  >
+            <Grid item justifyContent="center" container>
+              <Stack>
                 <Button
                   onClick={signupNewUser}
                   sx={signupStyles.btn}
@@ -96,24 +105,28 @@ function Signup({ signup }) {
                   Sign up
                 </Button>
                 <Button
-                  onClick={()=>navigate("/login")}
+                  onClick={() => navigate("/login")}
                   sx={signupStyles.btn1}
                   size="large"
                   Type="error"
                   variant="small"
-                ><Typography variant="caption">
-                                  Already have an account?...
-                <span
-                  onClick={() => navigate("/login")}
-                  style={{ cursor: "pointer", color: "#FF3F00" }}
-                >login</span></Typography>
+                >
+                  <Typography variant="caption">
+                    Already have an account?...
+                    <span
+                      onClick={() => navigate("/login")}
+                      style={{ cursor: "pointer", color: "#FF3F00" }}
+                    >
+                      login
+                    </span>
+                  </Typography>
                 </Button>
               </Stack>
             </Grid>
           </Grid>
         </Grid>
       </form>
-    </Paper>
+    </Box>
   );
 }
 
