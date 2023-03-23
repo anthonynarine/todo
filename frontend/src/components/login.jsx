@@ -11,7 +11,7 @@ const loginStyles = {
     marginTop: 5,
     padding: 2,
     paddingBottond: 5,
-    backgroundColor: "#DDDDE5",
+    backgroundColor: "#CAD3D7",
     // borderRadius: 5,
     boxShadow: "5px 5px 10px #ccc",
     ":hover": {

@@ -28,12 +28,12 @@ function Header({ user, logout }) {
     },
     Tabs: {
       marginLeft: "auto",
-      color: "#F0F8FB",
+      color: "#060606",
       "&:hover": {
         color: "black",
         backgroundColor: "#F0F8FB",
         borderRadius: "30px",
-        border: "solid #ff3f00",
+        // border: "solid #ff3f00",
         borderWidth: "1px",
         borderTopLeftRadius: "5px",
         // borderTopRightRadius: "5%",
@@ -48,7 +48,7 @@ function Header({ user, logout }) {
     <AppBar
       position="stick"
       sx={{
-        background: "#060606",
+        background: "#CAD3D7",
         padding: "1rem",
         width: 650,
         margin: "auto",
@@ -56,7 +56,7 @@ function Header({ user, logout }) {
     >
       <Toolbar>
         <HiveIcon sx={{ color: "#FF3F00", paddingRight: "1rem" }} />
-        <Typography> TodoApp</Typography>
+        <Typography color="#060606" > TodoApp</Typography>
         <Tabs
           sx={{ marginLeft: "auto" }}
           textColor="white"
@@ -67,6 +67,7 @@ function Header({ user, logout }) {
          <Tab sx={headerStyles.Tabs} label="Todos" LinkComponent={Link} to="/"></Tab> 
          {user ? (
             <Tab
+             sx={{color:"#060606"}}
               onClick={logout}
               label="Logout"
               LinkComponent={Link}

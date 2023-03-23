@@ -1,18 +1,13 @@
 import {
-  Typography,
-  Grid,
-
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-  CardMedia,
-  CardActionArea,
-} from "@mui/material";
+  Typography,Grid,Card,CardContent,CardActions,Button,CardMedia,CardActionArea,Paper} from "@mui/material";
 import TodoDataService from "../services/axios-requests";
 import { useState, useEffect } from "react";
 import fox from "../assets/fox.jpg";
+// import asl from "../assets/asl.png"
 import { useNavigate } from "react-router-dom";
+
+import moment from "moment"
+//the moment library is allows for date format
 
 
 const todoStyles = {
@@ -28,14 +23,44 @@ const todoStyles = {
     },
   },
   btn: {
-    backgroundColor: "#060606",
-    width: 100,
-    marginTop: 5,
+    // backgroundColor: "#060606",
+    // width: 100,
+    color: 'green',
+    marginRight: 5,
+    marginLeft: 5,
     borderRadius: 3,
     "&:hover": {
-      backgroundColor: "#FF3F00",
+      backgroundColor: "white",
     },
+    boxShadow: "2px 0px 0px #ccc",
+    ":hover":{
+      boxShadow:"5px 5px 0px #D5DDE0", 
+    }
   },
+  deletebtn: {
+    // backgroundColor: "#060606",
+    // width: 100,
+    color: 'red',
+    marginRight: 5,
+    marginLeft: 5,
+    borderRadius: 3,
+    "&:hover": {
+      backgroundColor: "white",
+    },
+    boxShadow: "2px 0px 0px #ccc",
+    ":hover":{
+      boxShadow:"5px 5px 0px #D5DDE0", 
+    }
+  },
+  paper:{
+    margin:"auto",
+    width: "75%",
+    height: "auto",
+    marginTop:3,
+    paddingTop: 5,
+    paddingBottom: 2.5,
+    backgroundColor:"#CAD3D7"
+  }
 };
 
 function TodoList({ token }) {
@@ -61,6 +86,7 @@ function TodoList({ token }) {
 
   return (
     <>
+    <Paper sx={todoStyles.paper} > 
       {token == null || token === "" ? (
         <Card onClick={()=>navigate("/login")} sx={todoStyles.card}>
           <CardActionArea>
@@ -94,7 +120,7 @@ function TodoList({ token }) {
               <Card
                 sx={{
                   maxWidth: 345,
-                  backgroundColor: "white",
+                  backgroundColor: "#E7EFF5",
                   margin: "auto",
                   marginTop: 2,
                   marginBottom: 2,
@@ -114,21 +140,23 @@ function TodoList({ token }) {
                     color="text.secondary"
                   >
                     <span style={{ fontWeight: "bold" }}>Date Created:</span>{" "}
-                    {todo.created}
+                    {moment(todo.created).format("Do MMMM YYYY")}
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ marginTop: -3 }}>
-                  <Button sx={{ marginLeft: 10 }} size="small">
+                  <Button size="small" variant="text" sx={todoStyles.btn} size="small">
                     Edit
                   </Button>
-                  <Button size="small">Delete</Button>
+                  <Button sx={todoStyles.deletebtn} size="small">Delete</Button>
                 </CardActions>
               </Card>
             );
           })}
         </Grid>
       )}
+       </Paper>
     </>
+
   );
 }
 
