@@ -6,6 +6,7 @@ import fox from "../assets/fox.jpg";
 // import asl from "../assets/asl.png"
 import { useNavigate } from "react-router-dom";
 
+
 import moment from "moment"
 //the moment library is allows for date format
 
@@ -25,12 +26,12 @@ const todoStyles = {
   btn: {
     // backgroundColor: "#060606",
     // width: 100,
-    color: 'green',
+    color: 'black',
     marginRight: 5,
     marginLeft: 5,
     borderRadius: 3,
     "&:hover": {
-      backgroundColor: "white",
+      backgroundColor: "#D5DDE0",
     },
     boxShadow: "2px 0px 0px #ccc",
     ":hover":{
@@ -45,7 +46,7 @@ const todoStyles = {
     marginLeft: 5,
     borderRadius: 3,
     "&:hover": {
-      backgroundColor: "white",
+      backgroundColor: "#D5DDE0",
     },
     boxShadow: "2px 0px 0px #ccc",
     ":hover":{
@@ -63,7 +64,7 @@ const todoStyles = {
   }
 };
 
-function TodoList({ token }) {
+function TodoList({ token}) {
 
   const navigate = useNavigate();
 
@@ -77,7 +78,9 @@ function TodoList({ token }) {
     TodoDataService.getAll(token)
       .then((response) => {
         setTodos(response.data);
-        console.log("Data", response.data);
+        console.log("Data =", response.data);
+        console.log("USER MEMO",response.data[0].memo )
+        console.log("TOKEN =", token)
       })
       .catch((error) => {
         console.log(error);
@@ -86,7 +89,7 @@ function TodoList({ token }) {
 
   return (
     <>
-    <Paper sx={todoStyles.paper} > 
+    {/* <Paper sx={todoStyles.paper} >  */}
       {token == null || token === "" ? (
         <Card onClick={()=>navigate("/login")} sx={todoStyles.card}>
           <CardActionArea>
@@ -94,7 +97,7 @@ function TodoList({ token }) {
               component="img"
               height="190"
               image={fox}
-              alt="green iguana"
+              alt="grey fox"
             />
             <CardContent>
               <Typography  gutterBottom variant="h5" component="div">
@@ -115,9 +118,11 @@ function TodoList({ token }) {
         </Card>
       ) : (
         <Grid item xs={8}>
+          {/* <Button varient="contained" onClick={()=>navigate("/todos/create")} >Add To-do</Button> */}
           {todos.map((todo) => {
             return (
               <Card
+                key={todo.id}
                 sx={{
                   maxWidth: 345,
                   backgroundColor: "#E7EFF5",
@@ -144,7 +149,7 @@ function TodoList({ token }) {
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ marginTop: -3 }}>
-                  <Button size="small" variant="text" sx={todoStyles.btn} size="small">
+                  <Button size="small" variant="text" sx={todoStyles.btn}>
                     Edit
                   </Button>
                   <Button sx={todoStyles.deletebtn} size="small">Delete</Button>
@@ -154,7 +159,7 @@ function TodoList({ token }) {
           })}
         </Grid>
       )}
-       </Paper>
+       {/* </Paper> */}
     </>
 
   );

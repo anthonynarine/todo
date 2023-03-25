@@ -57,8 +57,8 @@ function App() {
       <Routes>
         {/* we pass in token for the user to authenticate itself */}
         <Route path="/" element={<TodoList token={token} />} />
-        <Route path="/todos/create" element={<AddTodo token={token} />} />
-        <Route path="/todos/:id" element={<AddTodo token={token} />} />
+        <Route path="/todos/create" element={<AddTodo user={user} token={token} />} />
+        <Route path="/todos/:id/" element={<AddTodo token={token} />} />
         <Route path="/login" element={<Login login={login} />} />
         <Route path="/signup" element={<Signup signup={signup} />} />
         <Route path="*" element={<ErrorPage />} />

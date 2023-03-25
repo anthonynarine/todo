@@ -52,6 +52,7 @@ function Login({ login }) {
   const signIn = () => {
     login({ username: username, password: password });
     navigate("/");
+   console.log(username)
   };
 
   return (
