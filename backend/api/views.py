@@ -27,7 +27,7 @@ class TodoListCreate(generics.ListCreateAPIView):
 
 
     """ get_queryset returns the queryset of todo objects for the view.
-        In this case we specify the query set as all todos which the match the user.
+        In this case we specify the query set as all todos which match the user.
         additionally we order the todos by date showing the latest todo 1st. query_set
         is customizable to to retur the set of todos that you want."""
     def get_queryset(self):
@@ -35,8 +35,8 @@ class TodoListCreate(generics.ListCreateAPIView):
         return Todo.objects.filter(user=user).order_by("-created")
 
     def perform_create(self, serializer):
-        # serializer will holds a django model
         serializer.save(user=self.request.user)
+        # serializer will hold a django model
 
     # add urls for above view - path("todos/",  views.TodoListCreate.as_view()),
 
@@ -111,7 +111,7 @@ def login(request):
             try:
                 token = Token.objects.get(user=user)
             except: # if token not in db, create a new one
-                token = token.objects.create(user=user)
+                token = Token.objects.create(user=user)
             return JsonResponse({"token" :str(token)}, status=201)         
             
             
